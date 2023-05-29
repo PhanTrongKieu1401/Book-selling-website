@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header_shop.css}">
+</head>
+<body>
+    <header class="header__home-shop">
+        <div class="container">
+        	<div class="header__form col-xs-10 col-sm-10 col-md-12 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+	            <div class="header__logo">
+	                <img th:src="@{/img/logo-main.jpg}" alt="Logo BookStore" class="header__logo-img">
+	            </div>
+	            <div class="form__search">
+	                <form th:action="@{/bookstore/search/1}" th:method="GET">
+	                	<div class="form__search-input">
+	                    	<input type="text" id="ipSearchKey" class="search-input" name="key" placeholder="Tìm kiếm tên sách .....">
+	                	</div>
+						<button id="btnSearch" class="btn btn--primary form__search-btn" type="submit">
+	                   		<i class="form__search-icon fas fa-search"></i>
+	                	</button>
+	                </form>
+	            </div>
+	            <ul class="header__navbar-list">
+	                <li class="header__navbar-item">
+	                    <a class="header__navbar-link" th:href=@{/bookstore}>
+	                        <i class="fas fa-home"></i>
+	                        <label>Home</label>
+	                    </a>
+	                </li>
+	                <li class="header__navbar-item">
+	                    <a class="header__navbar-link" th:href=@{/cart}>
+	                        <i class="fas fa-shopping-cart"></i>
+	                        <label>
+	                        	Cart (<span th:text="${cartCount}"></span>)
+	                        </label>
+	                    </a>
+	                </li>
+	                <li class="header__navbar-item">
+	                    <a class="header__navbar-link" th:href=@{/bookstore/list-bill}>
+	                        <i class="fas fa-shopping-bag"></i>
+	                        <label>Your Orders</label>
+	                    </a>
+	                </li>
+	                <li class="header__navbar-item">
+	                    <div class="form__account">
+	                        <a id="btnAccount" class="btn header__navbar-link">
+	                            <i class="form__account-img fas fa-user-circle"></i>
+	                            <label id="infCustomer" for="btnAccount" th:if="${session.customer}" th:text="${session.customer.username}"></label>
+	                            <label id="infCustomer" for="btnAccount" th:unless="${session.customer}">Account</label>
+	                        </a>
+							<div class="form__account-action">
+	                            <ul class="list__account-action">
+	                                <li class="account-action-item">
+	                                    <a id="information" class="account-action-link" th:href="@{/bookstore/user}">Thông tin</a>
+	                                </li>
+	                                <li class="account-action-item">
+	                                    <a id="logout" class="account-action-link" onclick="logout()" th:href="@{/bookstore/login}">Đăng xuất</a>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </li>
+	            </ul>
+	        </div>
+        </div>
+    </header>
+    <script th:src="@{/script/header_shop.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+.main-content {
+  flex: 1;
+}
+.row__title-btn{
+    display: flex;
+    max-width: 1110px;
+    height: 50px;
+    line-height: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+.row__title-btn span{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.new__book{width: 100px;}
+.new__book a{width: 100%;}
+.btnAction{
+	display: flex;
+}

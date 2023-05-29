@@ -1,0 +1,129 @@
+@charset "UTF-8";
+h1,h2,h3,h4,h5,h6{
+	margin-bottom: 1.5rem;
+}
+/* image product */
+.product__details__pic__item {
+	margin-bottom: 20px;
+}
+.product__details__pic__item img {
+	width: 350px;
+	height: auto;
+}
+
+/* rating */
+.product__details__rating {
+	font-size: 14px;
+	margin-bottom: 12px;
+}
+.product__details__rating i {
+	margin-right: -2px;
+	color: #EDBB0E;
+}
+.product__details__rating span {
+	color: #dd2222;
+}
+
+
+
+/* add quantity */
+.product__details__quantity {
+	display: inline-block;
+	margin-right: 6px;
+}
+.pro-qty {
+	width: 140px;
+	height: 50px;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	background: #f5f5f5;
+	margin-bottom: 5px;
+}
+.pro-qty input {
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+	color: #6f6f6f;
+	width: 50px;
+	border: none;
+	background: #f5f5f5;
+	text-align: center;
+}
+.pro-qty .qtybtl {
+	width: 35px;
+	font-size: 16px;
+	color: #6f6f6f;
+	cursor: pointer;
+	display: inline-block;
+}
+
+/* btn add */
+#btnAdd{}
+
+/* tab product detail */
+.product__details__tab {
+	padding-top: 85px;
+}
+
+.product__details__tab .nav-tabs {
+	border-bottom: none;
+	justify-content: center;
+	position: relative;
+}
+
+.product__details__tab .nav-tabs:before {
+	position: absolute;
+	left: 0;
+	top: 12px;
+	height: 1px;
+	width: 350px;
+	background: #ebebeb;
+	content: "";
+}
+
+.product__details__tab .nav-tabs:after {
+	position: absolute;
+	right: 0;
+	top: 12px;
+	height: 1px;
+	width: 350px;
+	background: #ebebeb;
+	content: "";
+}
+
+.product__details__tab .nav-tabs li {
+	margin-bottom: 0;
+	margin-right: 65px;
+}
+
+.product__details__tab .nav-tabs li:last-child {
+	margin-right: 0;
+}
+
+.product__details__tab .nav-tabs li a {
+	font-size: 16px;
+	color: #999999;
+	font-weight: 700;
+	border: none;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	padding: 0;
+}
+
+.product__details__tab .product__details__tab__desc {
+	padding-top: 44px;
+}
+
+.product__details__tab .product__details__tab__desc h6 {
+	font-weight: 700;
+	color: #333333;
+	margin-bottom: 26px;
+	font-size: 1.6rem;
+}
+
+.product__details__tab .product__details__tab__desc p {
+	color: #666666;
+	font-size: 1.2rem;
+}
+

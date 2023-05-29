@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Book  Detail</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/product_detail.css}">
+    <style>
+	    .invalid{
+	        border: 2px solid rgb(202, 52, 52);
+	    }
+	    .invalid-text{
+	        color: rgb(202, 52, 52);
+	    }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row__title">
+            <span class="row__title-main">Sách</span>
+        </div>
+    	<form id="form__inf" class="form__inf" th:object="${product}" th:action="@{save/{id}(id = ${product.idPro})}" th:method="${ProductCode} < 0 ? POST : PUT" enctype="multipart/form-data">
+    		<div style="display: none">
+    			ID PRO: <input type="number" id="idPro" name="idPro" th:value="${product.idPro}" disabled>
+    		</div>
+    		<div class="form__body">
+    			<div class="form__left">
+    				<div id="notify" th:text="${notify}" style="display: none"></div>
+	                <div class="form__title_author">
+	                    <div class="title">
+	                        <label for="ipTitle" class="label lblTitle">
+	                        	Title<span style="color: red;">*</span>:
+	                        </label>
+	                        <input class="required" type="text" id="ipTitle" name="titlePro" th:value="${product.titlePro}" disabled>
+	                        <span class="form-message"></span>
+	                    </div>
+	                    <div class="author">
+	                        <label for="ipAuthor" class="label lblAuthor">
+	                        	Author<span style="color: red;">*</span>:
+	                        </label>
+	                        <input class="required" type="text" id="ipAuthor" name="authorPro" th:value="${product.authorPro}" disabled>
+	                        <span class="form-message"></span>
+	                    </div>
+	                </div>
+	                <div class="form__descript">
+	                    <div class="descript">
+	                        <label for="taDescript" class="label lblDescript">Description:</label>
+	                        <textarea name="descriptPro" id="taDescript" cols="30" rows="10" th:value="${product.descriptPro}" th:text="${product.descriptPro}" disabled></textarea>
+	                    </div>
+	                </div>
+	                <div class="form__date_page">
+	                    <div class="date">
+	                        <label for="ipDate" class="label lblDate">
+	                        	Create Date<span style="color: red;">*</span>:
+	                        </label>
+	                        <input class="required" type="date" id="ipDate" name="createDatePro" th:value="${product.createDatePro}" disabled>
+	                        <span class="form-message"></span>
+	                    </div>
+	                    <div class="page">
+	                        <label for="ipPage" class="label lblPage">Page Number:</label>
+	                        <input type="text" id="ipPage" name="pageNumberPro" th:value="${product.pageNumberPro}" disabled>
+	                    </div>
+	                </div>
+	                <div class="form__category">
+	                    <div class="category">
+	                        <label for="slCategory" class="label lblCategory">Category:</label>
+	                        <select class="" id="slCategory" name="categoryPro" th:value="${product.categoryPro}" disabled>
+	                            <option th:each="category:${categories}" name="name" th:value="${category.name}" th:selected="${category.name == product.categoryPro}" th:text="${category.name}"></option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="form__right">
+	                <div class="form__right-btn-input">
+	                    <label for="ipFile" class="label-btn" >Upload</label>
+	                    <input type="file" id="ipFile" class="file" name="image" th:value="${product.imagepPro}" accept=".png, .jpg" onchange="showImagePreview()" disabled>
+	                </div>
+	                <div class="form__right-load-img">
+	                    <div class="form__right-img">
+	                       <img id="img" th:src="@{'/upload/' + ${product.imagepPro}}" th:alt="${product.titlePro}">
+	                    </div>
+	                </div>
+	            </div>
+    		</div>
+        	<div class="form__footer">
+                <div class="wrap">
+                    <div id="edit" class="action__AES-E">
+                        <button type="button" id="btn_edit" class="btn action__btn-Edit btn-warning" onclick="changeBtn()">Edit</button>
+                    </div>
+                    <div id="save" class="action__AES-S">
+                        <button type="submit" class="btn action__btn-Save btn-success" onclick="return confirmAdd()">Save</button>
+                    </div>  
+                    <div id="add" class="action__AES-A">
+                        <button type="submit" class="btn action__btn-Add btn-success" onclick="return confirmAdd()">Add</button>
+                    </div>
+                </div>             
+            </div>
+    	</form>
+	</div>
+	
+	<script th:src="@{/script/product_detail.js}"></script>
+	<script th:src="@{/script/uploadIMG.js}"></script>
+	<script th:src="@{/script/validator.js}"></script>
+	<script>
+		Validator({
+			form: '#form__inf',
+			errorSelector: '.form-message',
+			rules: [
+				Validator.isRequired('#ipTitle'),
+				Validator.isRequired('#ipAuthor'),
+				Validator.isDate('#ipDate'),				
+			],
+			//onSubmit: function (data){
+			 
+			//}
+		});
+	</script>
+</body>
+</html>

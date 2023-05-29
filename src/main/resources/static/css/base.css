@@ -1,0 +1,115 @@
+@charset "UTF-8";
+:root{
+	--colorGradientMain: linear-gradient(to left,rgba(255, 81, 0, 0.712),rgba(255, 51, 0, 0.788));
+    --primaryColor: rgb(238, 77, 45);
+    --colorText: #362d2cfd;
+    --colorWhite:#fff;
+    --colorBlack: #333;
+    --colorBorder: #dbdbdd;
+    --colorOutline: #777;
+    --headerHeight: 120px;
+    --navbarHeight: 34px;
+    --headerWithSearchHeight: calc(var(--headerHeight) - var(--navbarHeight))
+}
+
+*{
+	
+    box-sizing: inherit;
+    margin: 0px;
+    padding: 0px;
+}
+
+html{
+    /* 100% la 10px */
+    font-size: 62.5%;
+    /* do cao chu: 1,6 lan font size*/
+    line-height: 1.6rem;
+    box-sizing: border-box;
+}
+
+body{
+	font-family: 'Calibri', sans-serif !important;
+}
+
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__full-width{
+    width: 100%;
+}
+
+.grid__row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Modal */
+.modal{
+    display: flex;
+    position: fixed;
+    top: 0;right:0;bottom: 0;left: 0;
+    animation: fadeIn linear 0.3s;
+    will-change: opacity;
+}
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: var(--colorGradientMain);
+}
+.modal__body{
+    position: relative;
+    margin: auto;
+    z-index: 1;
+    --growth-from: 0.7;
+    --growth-to: 1;
+    animation: growthForm linear 0.3s;
+    will-change: transform;
+}
+.btn--general{
+	min-width: 142px;
+    height: 36px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--colorText);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6rem;
+}
+.btn--primary{
+	background-color: var(--primaryColor);
+}
+
+/* animation */
+@keyframes fadeIn{ /*hien dan len*/
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+@keyframes growthNotify{
+    from{
+        opacity: 0;
+        transform: scale(0);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes growthForm{
+    from{
+        transform: scale(var(--growth-from));
+    } to {
+        transform: scale(var(--growth-to));
+    }
+}

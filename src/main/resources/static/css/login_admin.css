@@ -1,0 +1,21 @@
+@charset "UTF-8";
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to left,rgba(255, 81, 0, 0.712),rgba(255, 51, 0, 0.788));
+}
+.main-content {
+  flex: 1;
+}
+
+.btn-login {
+	background-color: rgb(238, 77, 45);
+  	font-size: 0.9rem;
+  	letter-spacing: 0.05rem;
+  	padding: 0.75rem 1rem;
+}

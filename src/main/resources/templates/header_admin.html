@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header_admin.css}">
+</head>
+<body>
+    <div class="header__home-admin">
+        <div class="header__form">
+            <div class="header__logo">
+                <img th:src="@{/img/logo-main.jpg}" alt="Logo BookStore" class="header__logo-img">
+            </div>
+            <form class="form__search form-inline pull-right" th:action="@{/admin/search/1}" th:method="GET">
+                <div class="form__search-input">
+                    <input type="text" id="ipSearchKey" class="search-input" name="searchText" placeholder="Tìm kiếm tên sách .....">
+                </div>
+				<button id="btnSearch" type="submit" class="btn form__search-btn">
+                    	<i class="form__search-icon fas fa-search"></i>
+                </button>
+            </form>
+            <div class="form__account">
+                <button id="btnAccount" class="btn form__account-btn" onclick="displayAction()">
+                    <i class="form__account-img fas fa-user-circle" style="color: #fcfcfc;"></i>
+                    <label th:if="${session.admin}" id="infAdmin" for="btnAccount" th:text="${session.admin.username}"></label>
+                    <label th:unless="${session.admin}" id="infAdmin" for="btnAccount">Quản trị</label>
+                </button>
+                <div class="form__account-action">
+                    <ul class="list__account-action">
+                        <li th:unless="${session.admin}" class="account-action-item">
+                            <a th:href="@{/admin/login}" id="login" class="btn account-action-link">Đăng nhập</a>
+                        </li>
+                        <li th:if="${session.admin}" class="account-action-item">
+                            <a th:href="@{/admin/logout}" id="logout" class="btn account-action-link" onclick="logout()">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/script/header_admin.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</body>
+</html>

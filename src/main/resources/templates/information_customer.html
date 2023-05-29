@@ -1,0 +1,119 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Information Customer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/information_customer.css}">
+	<style>
+	    .form-control.invalid{
+	        border: 2px solid rgb(202, 52, 52);
+	    }
+	    .invalid-text{
+	        color: rgb(202, 52, 52);
+	    }
+	</style>
+</head>
+<body>
+	<header th:include="~{header_shop.html}"></header>
+	<div class="main-content container">
+		<!--Section: Block Content-->
+		<section class="mt-5 mb-4">
+			<!--Grid row-->
+			<div class="row">
+				<form id="form__inf" th:action="@{user/update}" th:method = "PUT" class="mb-5">
+					<!--Grid column-->
+					<div class="col-lg-8 mb-4 justify-content-center">
+						<!-- Card -->
+						<div class="card wish-list pb-1">
+							<div class="card-body">
+								<h5 class="mb-2">Thông tin khách hàng</h5>
+								<!-- Name -->
+								<div class="md-form md-outline">
+									<label for="name"> 
+										Tên<span style="color: red;">*</span>
+									</label> 
+									<input th:if="${session.customer}" type="text" id="name" name="name" class="required form-control" th:value="${session.customer.name}" disabled> 
+									<input th:unless="${session.customer}" type="text" id="name" name="name" class="required form-control" placeholder="Phan Trọng Kiều" disabled> 
+									<span class="form-message"></span>
+								</div>
+								<!-- Address -->
+								<div class="md-form md-outline mt-2">
+									<label for="address">
+										Address<span style="color: red;">*</span>
+									</label> 
+									<input th:if="${session.customer}" type="text" id="address" name="address" placeholder="Số nhà và tên đường" class="required form-control" th:value="${session.customer.address}" disabled> 
+									<input th:unless="${session.customer}" type="text" id="address" name="address" placeholder="Số nhà và tên đường" class="required form-control" disabled>
+									<span class="form-message"></span>
+								</div>
+								<!-- Phone -->
+								<div class="md-form md-outline mt-2">
+									<label for="phone">
+										Phone<span style="color: red;">*</span>
+									</label> 
+									<input th:if="${session.customer}" type="text" id="phone" name="phone" placeholder="0811111111" class="required form-control" th:value="${session.customer.phone}" disabled> 
+									<input th:unless="${session.customer}" type="text" id="phone" name="phone" placeholder="0811111111" class="required form-control" disabled>
+									<span class="form-message"></span>
+								</div>
+								<!-- Email address -->
+								<div class="md-form md-outline mt-2">
+									<label for="email">
+										Email<span style="color: red;">*</span>
+									</label> 
+									<input th:if="${session.customer}" type="text" id="email" name="email" class="required form-control" th:value="${session.customer.email}" disabled> 
+									<input th:unless="${session.customer}" type="text" id="email" name="email" class="required form-control" placeholder="kieupt@gmail.com" disabled>
+									<span class="form-message"></span>
+								</div>
+							</div>
+						</div>
+						<!-- Card -->
+						<!--Grid column-->
+						<div class="row wrap justify-content-end mt-2">
+							<div id="edit" class="action__AES-E text-end">
+                    			<button type="button" id="btn_edit" class="btn btn-warning btn-lg btn-block" onclick="changeBtn()">Edit</button>
+                			</div>
+                			<div id="save" class="action__AES-S text-end">
+                    			<button type="submit" class="btn btn-success btn-lg btn-block" onclick="return confirmAdd()">Save</button>
+                			</div>  
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--Grid row-->
+		</section>
+		<!--Section: Block Content-->
+	</div>
+	<footer th:include="~{footer_shop.html}"></footer>
+
+	<script th:src="@{/script/information_customer.js}"></script>
+	<script th:src="@{/script/validator.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		Validator({
+			form: '#form__inf',
+			errorSelector: '.form-message',
+			rules:[
+				Validator.isRequired('#name',"Vui lòng điền tên khách hàng!"),
+				Validator.isRequired('#address',"Vui lòng điền địa chỉ nhận hàng!"),
+				Validator.isRequired('#phone',"Vui lòng điền số điện thoại khách hàng!"),
+				Validator.isPhone('#phone',"Số điện thoại không đúng định dạng!"),
+				Validator.isRequired('#email',"Vui lòng bổ sung email!"),
+				Validator.isEmail('#email',"Email không đúng định dạng!"),
+			],
+			//onSubmit: function (data){
+			 
+			//}
+		})
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+</html>

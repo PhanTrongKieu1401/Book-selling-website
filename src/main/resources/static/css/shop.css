@@ -1,0 +1,53 @@
+@charset "UTF-8";
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* danh mục thể loại */
+ul.navbar-list_group{
+    font-size: 2rem;
+}
+li.title-directory{
+    background-color: var(--primaryColor);
+}
+h2.title-directory{
+    color: var(--colorWhite);
+}
+a.item-group_link{
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+li.list-group_link{}
+
+/* danh sách sản phẩm */
+.list-products_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Số cột trên mỗi hàng */
+    grid-gap: 20px; /* Khoảng cách giữa các sản phẩm */
+  }
+
+
+
+
+
+
+
+
+
+

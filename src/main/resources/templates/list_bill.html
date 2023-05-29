@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Bill</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" 
+	integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/base.css}" />
+	<link rel="stylesheet" th:href="@{/css/list_bill.css}" />
+</head>
+<body>
+	<header th:include="~{header_shop.html}"></header>
+	<div class="main-content container">
+		<div class="body">
+			<div class="row__title-btn">
+				<span>List Bills</span>
+			</div>
+			<th:block th:if="${#lists.isEmpty(bills.pageList)}">
+				<h3>No Bill</h3>
+			</th:block>
+			<th:block th:unless="${#lists.isEmpty(bills.pageList)}">
+				<nav class="row justify-content-center wow fadeIn" data-wow-delay="0.2s">
+					<table id="tblProducts" class="table table-striped table-bordered">
+						<thead class="table-dark">
+							<tr>
+								<th style="width: 10%;">ID</th>
+								<th style="width: 20%;">Create Date</th>
+								<th style="width: 20%;">Total Amount</th>
+								<th style="width: 35%;">Status</th>
+								<th style="width: 15%;">Action</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="bill: ${bills.pageList}">
+								<td th:text="${bill.id}"></td>
+								<td th:text="${bill.createDate}"></td>
+								<td th:text="${bill.totalAmount}"></td>
+								<td th:text="${bill.status}"></td>
+								<td class="btnAction">
+									<a th:href="@{/bookstore/bill/{id}(id = ${bill.id})}" class="btn btn-success col-sm-5">Chi tiết</a>				
+									<form th:action="@{/bookstore/delete/{id}(id = ${bill.id})}" onsubmit="return confirmDelete()" th:method="DELETE" class="form__delete col-sm-5">
+										<button class="btn btn-danger btn-delete col-sm-12">Hủy đơn</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="pagination justify-content-center">
+						<li th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+							<a class="page-link" th:href="@{/bookstore/list-bill}">First</a>
+						</li>
+						<li th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+							<a class="page-link" aria-label="Previous" th:href="@{|${baseUrl}${currentIndex - 1}|}" title='Go to previous page'>
+								<span aria-hidden="true">«</span> 
+								<span class="sr-only">Previous</span>
+							</a>
+						</li>
+						<li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}" th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+							<a class="page-link" th:href="@{|${baseUrl}${item}|}"> 
+							<span th:text='${item}'>1</span>
+						</a>
+						</li>
+						<li th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+							<a class="page-link" aria-label="Next" th:href="@{|${baseUrl}${currentIndex + 1}|}" title='Go to next page'>
+								<span aria-hidden="true">»</span> 
+								<span class="sr-only">Next</span>
+							</a>
+						</li>
+						<li th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+							<a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
+						</li>
+					</ul>
+				</nav>
+			</th:block>
+		</div>	
+	</div>
+	<footer th:include="~{footer_shop.html}"></footer>
+	
+	<script th:src="@{/script/list_bill.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

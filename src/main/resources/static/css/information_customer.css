@@ -1,0 +1,30 @@
+@charset "UTF-8";
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.wrap{
+    display: flex;
+    position: relative;
+}
+.btn{
+    display: block;
+}
+.action__AES-E{
+    position: absolute;
+}
+
+.action__AES-S{
+    position: absolute;
+    display: none;
+}

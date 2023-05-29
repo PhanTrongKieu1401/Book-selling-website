@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Footer Shop</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}">
+	<style>
+		p a{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- Footer -->
+	<footer class="footer sticky-footer text-center text-lg-start text-white" style="background-color: var(--primaryColor); margin_top: 3rem;">
+		<!-- Grid container -->
+		<div class="container p-4 pb-0">
+			<!-- Section: Links -->
+			<section class="">
+				<!--Grid row-->
+				<div class="row">
+					<!-- Grid column -->
+					<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">Book Store</h6>
+						<p>Chào mừng các bạn đến với trang sách online của chúng tôi. 
+						Nơi đây có rất nhiều những cuốn sách thú vị đang chờ đón các bạn. 
+						Hãy cũng khám phá thôi nào!</p>
+					</div>
+					<!-- Grid column -->
+					<hr class="w-100 clearfix d-md-none" />
+					<!-- Grid column -->
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+						<p>
+							<a class="text-white">Author</a>
+						</p>
+						<p>
+							<a class="text-white">Title</a>
+						</p>
+					</div>
+					<!-- Grid column -->
+					<hr class="w-100 clearfix d-md-none" />
+					<!-- Grid column -->
+					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">Customer</h6>
+						<p>
+							<a th:href="@{/bookstore/user}" class="text-white">Your Account</a>
+						</p>
+						<p>
+							<a th:href="@{/cart}" class="text-white">Your Cart</a>
+						</p>
+						<p>
+							<a th:href="@{/bookstore/list-bill}" class="text-white">Your Order</a>
+						</p>
+						<p>
+							<a class="text-white">Help</a>
+						</p>
+					</div>
+					<!-- Grid column -->
+					<hr class="w-100 clearfix d-md-none" />
+					<!-- Grid column -->
+					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+						<p>
+							<i class="fas fa-home mr-3"></i> Đống Đa, Hà Nội
+						</p>
+						<p>
+							<i class="fas fa-envelope mr-3"></i> info@gmail.com
+						</p>
+						<p>
+							<i class="fas fa-phone mr-3"></i> 0123456789
+						</p>
+					</div>
+					<!-- Grid column -->
+				</div>
+				<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+			<hr class="my-3">
+			<!-- Section: Copyright -->
+			<section class="p-3 pt-0">
+				<div class="row d-flex align-items-center">
+					<!-- Grid column -->
+					<div class="col-md-7 col-lg-8 text-center text-md-start">
+					</div>
+					<!-- Grid column -->
+					<!-- Grid column -->
+					<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+						<!-- Facebook -->
+						<a class="btn btn-outline-light btn-floating text-white m-1" type="button">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<!-- Github -->
+						<a href="https://github.com/PhanTrongKieu1401" class="btn btn-outline-light btn-floating text-white m-1" type="button" target="_blank">
+							<i class="fab fa-github-square fa-lg"></i>
+						</a>
+						<!-- Google -->
+						<a class="btn btn-outline-light btn-floating text-white m-1" type="button">
+							<i class="fab fa-google"></i>
+						</a>
+						<!-- Instagram -->
+						<a class="btn btn-outline-light btn-floating text-white m-1" type="button">
+							<i class="fab fa-instagram"></i>
+						</a>
+					</div>
+					<!-- Grid column -->
+				</div>
+			</section>
+			<!-- Section: Copyright -->
+		</div>
+		<!-- Grid container -->
+	</footer>
+	<!-- Footer -->
+</body>
+</html>

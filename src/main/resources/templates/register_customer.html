@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/fonts/fontawesome-free-6.4.0/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/login_register_customer.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .invalid {
+            border: 2px solid rgb(202, 52, 52);
+        }
+
+        .invalid-text {
+            color: rgb(202, 52, 52);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- modal layout -->
+    <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+            <!-- Register form -->
+            <div id="register_form" class="register_form">
+                <div class="auth-form">
+                    <div class="auth-form__container">
+                        <div class="auth-form__header">
+                            <h3 class="auth-form__heading">Đăng ký</h3>
+                            <span class="auth-form__switch-btn" type="button" onclick="callLogin()">Đăng nhập</span>
+                        </div>
+                        <form id="form_register" class="auth-form__form" onsubmit="event.preventDefault(); register()">
+                            <div class="auth-form__group">
+                                <input type="text" id="register_username" class="auth-form__input"
+                                    placeholder="Nhập tên đăng nhập">
+                                <span class="form-message"></span>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" id="register_password" class="register_password auth-form__input"
+                                    placeholder="Nhập mật khẩu">
+                                <span class="form-message"></span>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" id="confirm_password" class="auth-form__input"
+                                    placeholder="Xác nhận mật khẩu">
+                                <span class="form-message"></span>
+                            </div>
+                            <!-- </form> -->
+                            <div class="auth-form__aside">
+                                <p class="auth-form__policy-text">
+                                    Bằng việc đăng ký, bạn đã đồng ý về
+                                    <a href="" class="auth-form__text-link">Điều khoản dich vụ</a>
+                                    &
+                                    <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                                </p>
+                            </div>
+                            <div class="auth-form__controls">
+                                <!-- <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button> -->
+                                <button class="btn btn--primary btn--general" onclick="return confirmRegister()">ĐĂNG KÝ</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="auth-form__socials">
+                        <a href="" class="btn btn--size-s btn--with-icon auth-form__socials-facebook">
+                            <i class="auth-form__socials-icon fa-brands fa-square-facebook" style="color: #2a67cf;"></i>
+                            <span class="auth-form__socials-title">Kết nối với FaceBook</span>
+                        </a>
+                        <a href="" class="btn btn--size-s btn--with-icon auth-form__socials-google">
+                            <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                            <span class="auth-form__socials-title">Kết nối với Google</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+		</div>
+    </div>
+
+    <script th:src="@{/script/register_customer.js}"></script>
+    <script th:src="@{/script/validator.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        Validator({
+            form: '#form_register',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#register_username'),
+                Validator.isRequired('#register_password'),
+                Validator.minLength('#register_password', 8),
+                Validator.isRequired('#confirm_password'),
+                Validator.isConfirmed('#confirm_password', function () {
+                    return document.querySelector('.register_password').value;
+                }, 'Mật khẩu nhập lại không chính xác'),
+            ],
+        	onSubmit: function (data){
+			
+			}
+        });
+    </script>
+</body>
+
+</html>

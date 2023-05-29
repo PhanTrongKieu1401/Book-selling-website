@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+label{
+    margin: auto 0.5rem;
+}
+
+
+.header__home-shop{
+	display: flex;
+	align-items: center;
+	height: var(--headerHeight);
+    background-image: var(--colorGradientMain);
+}
+.header__form{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    align-items: center;
+    padding: 0 8px;
+}
+.header__logo{
+    width: 200px;
+}
+.header__logo-img{
+    width: 140px;
+}
+/* form search */
+.form__search{
+    display: flex;
+    flex: 1;
+    height: 40px;
+    margin-right: 5px;
+    background-color: var(--colorWhite);
+    border-radius: 5px;
+}
+form{
+	display: flex;
+	width: 100%;
+}
+.form__search-input{
+	width: 90%;
+    height: 100%;
+    position: relative;
+}
+.search-input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.4rem;
+    color: var(--colorText);
+    padding: 0 16px;
+}
+.form__search-btn{
+	
+    background-color: var(--primaryColor);
+    border: none;
+    border-radius: 5px;
+    width: 10%;
+    height: 36px;
+    margin: auto;
+    outline: none;
+}
+.form__search-btn:hover{
+    background-color: #f1664a;
+    cursor: pointer;
+}
+.form__search-icon{
+    font-size: 1.6rem;
+    color: var(--colorWhite);
+}
+/* end form search */
+/* navbar */
+ul.header__navbar-list{
+    display: flex;
+    width: 440px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    list-style: none;
+}
+li.header__navbar-item{
+    display: flex;
+    /* margin: auto; */
+    width: 25%;
+    height: 100%;
+    font-weight: 500;
+}
+li.header__navbar-item:hover{
+    background-color: rgba(255, 81, 0, 0.712);
+}
+a.header__navbar-link{
+    display: flex;
+    margin: auto;
+    height: 100%;
+    text-decoration: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    justify-content: center;
+    background-color: transparent;
+    align-items: center;
+    line-height: 2rem;
+}
+.header__form ul li a:hover{
+	color: var(--colorBlack);
+}
+
+ul li a{
+	color: var(--colorBlack);
+}
+
+ul li a label{
+	margin: 0 0 0 5px;
+}
+/* account */
+.form__account{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.form__account:hover .form__account-action{
+    transition: 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+#infCustomer{
+    font-size: 1.6rem;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 2rem;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+  	max-width: 100%;
+}
+
+/* account action */
+.form__account-action{
+    position: absolute;
+    width: 100px;
+    top: 120%;
+    background-color: var(--colorWhite);
+    border: 1px solid #d3d3d3;
+    cursor: default;
+    /* chon goc hien */
+    /* transform-origin: calc(100% - 20px) top;
+    animation: growthNotify ease-in 0.3s;
+    will-change: opacity, transform; */
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+}
+.form__account-action::before{
+    position: absolute;
+    content: "";
+    border-width: 10px 15px;
+    border-style: solid;
+    border-color: transparent transparent var(--colorWhite) transparent;
+    top: -18px;
+    left: 5px;
+}
+.form__account-action::after{
+    position: absolute;
+    display: block;
+    content: "";
+    width: 90px;
+    height: 1.6rem;
+    left: 0px;
+    top: -1.4rem;
+}
+.list__account-action{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.account-action-item{
+	text-decoration: none;
+    border-bottom: 1px solid rgb(155, 152, 152);
+}
+.account-action-item:hover{
+    background-color: #f7f6f6;
+}
+a:hover{
+    text-decoration: none;
+}
+.account-action-link{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    text-decoration: none;
+}
+
+/* end account action */
+/* end account */
+/* end navbar */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
