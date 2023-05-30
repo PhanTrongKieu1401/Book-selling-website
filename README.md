@@ -1,2 +1,2 @@
 # Demo-BookStore-Web
-Trang web bán sách chưa hoàn thiện.
+Incomplete book selling website.
